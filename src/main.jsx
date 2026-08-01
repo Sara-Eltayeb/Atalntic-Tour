@@ -39,14 +39,17 @@ function normalizeTours(csv) {
   if (rows.length < 2) return fallbackTours
   const headers = rows[0].map((h) => h.toLowerCase().replace(/[^a-z0-9]/g, ''))
   const find = (item, names) => { const i = names.map((n) => headers.indexOf(n)).find((n) => n >= 0); return i === undefined ? '' : item[i] || '' }
-  const tours = rows.slice(1).map((item) => ({
+  const tours = rows.slice(1).map((item) => {
+    const rawPrice = find(item, ['price', 'priceeur', 'cost', 'adultprice'])
+    return {
     name: find(item, ['tour', 'tourname', 'name', 'title']) || 'West Coast experience',
     location: find(item, ['location', 'destination', 'meetingpoint']) || 'West of Ireland',
-    price: find(item, ['price', 'cost', 'adultprice']) || 'Contact us',
-    duration: find(item, ['duration', 'length']) || 'Full day',
-    availability: find(item, ['availability', 'availableslots', 'slots', 'status']) || 'Check availability',
+    price: rawPrice ? (rawPrice.startsWith('€') ? rawPrice : `€${rawPrice}`) : 'Contact us',
+    duration: find(item, ['duration', 'durationhours', 'length']) || 'Full day',
+    availability: find(item, ['availability', 'availableslots', 'slotsthisweek', 'slots', 'status']) || 'Check availability',
     type: find(item, ['type', 'category']) || 'Guided tour',
-  })).filter((tour) => tour.name)
+    }
+  }).filter((tour) => tour.name)
   return tours.length ? tours : fallbackTours
 }
 
