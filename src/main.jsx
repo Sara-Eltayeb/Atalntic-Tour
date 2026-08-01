@@ -117,12 +117,12 @@ function normalizeTours(csv) {
           find(item, ["duration", "durationhours", "length"]) || "Full day",
         availability:
           find(item, [
-            "availability",
             "availableslots",
             "slotsthisweek",
             "slots",
             "status",
           ]) || "Check availability",
+        season: find(item, ["availability", "season", "dates"]) || "Not listed",
         offer:
           find(item, ["specialoffer", "offer", "special", "promotion"]) ||
           "No special offer listed",
