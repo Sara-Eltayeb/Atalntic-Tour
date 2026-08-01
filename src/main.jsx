@@ -98,7 +98,7 @@ function App() {
   const submit = async (event, preset) => {
     event?.preventDefault(); const question = (preset || input).trim(); if (!question || loading) return
     setInput(''); setLoading(true); setMessages((old) => [...old, { role: 'user', text: question, time: 'Now' }])
-    try { let nextWeather = null; try { nextWeather = await getWeather(question); setWeather(nextWeather) } catch { setWeather(null) } const answer = await askGemini(question, tours, nextWeather, messages); setMessages((old) => [...old, { role: 'assistant', text: answer, time: 'Now' }]) }
+    try { let currentTours = tours; try { currentTours = await getTours(); setTours(currentTours) } catch {} let nextWeather = null; try { nextWeather = await getWeather(question); setWeather(nextWeather) } catch { setWeather(null) } const answer = await askGemini(question, currentTours, nextWeather, messages); setMessages((old) => [...old, { role: 'assistant', text: answer, time: 'Now' }]) }
     catch (error) { setMessages((old) => [...old, { role: 'assistant', text: error.message, time: 'Now', error: true }]) }
     finally { setLoading(false) }
   }
