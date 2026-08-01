@@ -4,6 +4,7 @@ A static React/Vite customer chatbot for Atlantic Coast Tours. It combines two l
 
 - Google Sheets CSV export for the tour catalogue, prices, locations, and availability.
 - Open-Meteo forecast data for the destination referenced in the customer question.
+- A server-side Gemini Worker proxy so the AI key is not exposed in the GitHub Pages frontend.
 
 ## Run locally
 
