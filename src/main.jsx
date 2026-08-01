@@ -123,6 +123,9 @@ function normalizeTours(csv) {
             "slots",
             "status",
           ]) || "Check availability",
+        offer:
+          find(item, ["specialoffer", "offer", "special", "promotion"]) ||
+          "No special offer listed",
         type: find(item, ["type", "category"]) || "Guided tour",
       };
     })
