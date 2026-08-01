@@ -15,4 +15,6 @@
 .settings-modal input:focus{border-color:var(--orange)}
 .modal-save{border:0;margin-top:17px;cursor:pointer}
 .security-note{font:9px 'DM Mono';color:#98a59f;line-height:1.5;display:block;margin-top:17px}
+.chat-layout + .chat-layout{display:none}
+.chat-note{display:none}
 @media(max-width:800px){.settings-btn{padding:7px 9px}.ai-status{grid-column:1/-1;margin:0}}
