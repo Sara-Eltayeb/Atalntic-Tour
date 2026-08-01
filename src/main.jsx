@@ -85,7 +85,7 @@ function App() {
   const [tours, setTours] = useState(fallbackTours)
   const [catalogueState, setCatalogueState] = useState('loading')
   const [weather, setWeather] = useState(null)
-  const [messages, setMessages] = useState([{ role: 'assistant', text: 'Dia dhuit! I’m Coast, your west coast travel guide. Ask me about tours, availability, prices, or what the weather has in store.', time: 'Now' }])
+  const [messages, setMessages] = useState([{ role: 'assistant', text: 'Hello! I’m Coast, your west coast travel guide. Ask me about tours, availability, prices, or what the weather has in store.', time: 'Now' }])
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
 
